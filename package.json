@@ -1,0 +1,19 @@
+{
+  "name": "CJSI-flexbox-webpack",
+  "version": "0.1.0",
+  "description": "Hometask for Ciklum JS Internship Lesson 1",
+  "author": "Alexey Mironenko",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexMarvelo/CJSI-flexbox-webpack.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
+    "bourbon": "^4.2.6",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.3"
+  }
+}
