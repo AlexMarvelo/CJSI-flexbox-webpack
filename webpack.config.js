@@ -1,5 +1,6 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var webpackConfig = {
     entry: __dirname + '/scripts/app.js',
@@ -12,11 +13,17 @@ var webpackConfig = {
 
     module: {
         loaders: [
-            {test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader'},
-            {test: /\.sass$/, loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'},
-            {test: /\.gif$/, loader: 'url-loader?limit=10000&mimetype=image/gif'},
-            {test: /\.jpg$/, loader: 'url-loader?limit=10000&mimetype=image/jpg'},
-            {test: /\.png$/, loader: 'url-loader?limit=10000&mimetype=image/png'},
+            {test: /\.css$/, loader: ExtractTextPlugin.extract(
+                "style",
+                "css!autoprefixer"
+            )},
+            {test: /\.sass$/, loader: ExtractTextPlugin.extract(
+                "style",
+                "css!autoprefixer!sass"
+            )},
+            {test: /\.gif$/, loader: 'url?limit=10000&mimetype=image/gif'},
+            {test: /\.jpg$/, loader: 'url?limit=10000&mimetype=image/jpg'},
+            {test: /\.png$/, loader: 'url?limit=10000&mimetype=image/png'},
             {
                 test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url?limit=10000&mimetype=application/font-woff"
@@ -34,7 +41,7 @@ var webpackConfig = {
                 loader: "url?limit=10000&mimetype=image/svg+xml"
             },
             {test: /\.js$/, loader: 'babel', exclude: [/node_modules/]},
-            {test: /\.json$/, loader: 'json-loader'},
+            {test: /\.json$/, loader: 'json'},
             {test: /\.pug$/, loader: 'pug'}
         ]
     },
@@ -42,7 +49,8 @@ var webpackConfig = {
         new HtmlWebpackPlugin({
             template: 'views/index.pug',
             minify: false
-        })
+        }),
+        new ExtractTextPlugin("styles.css")
     ]
 };
 
