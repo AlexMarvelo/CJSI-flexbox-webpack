@@ -1,7 +1,8 @@
-li.gallery__item
-    a(href="#" style="background-image: url('../img/cover_windows8app.png')").gallery__itemImg
-    .gallery__itemContent
-        a(href="#"): h2.gallery__itemTitle Programming Windows 8 Apps
-        a(href="#"): h3.gallery__itemSubtitle Devon Musgrave
-        p.gallery__itemCategory Beginner
-        p.gallery__itemDescr This book is about writing Windows Store apps using HTML5, CSS3, and JavaScript.
+mixin bookCard(book)
+    li(data-category=book.level).gallery__item
+        a(href=book.url style=`background-image: url('../${book.cover}')`).gallery__itemImg
+        .gallery__itemContent
+            a(href=book.url): h2.gallery__itemTitle #{book.title}
+            a(href=book.authorUrl): h3.gallery__itemSubtitle #{book.author}
+            p.gallery__itemCategory #{book.level}
+            p.gallery__itemDescr #{book.info}

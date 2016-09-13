@@ -1,11 +1,13 @@
 var normalize = require('../node_modules/normalize.css/normalize.css'),
     styles = require('../styles/main.sass');
-var pageHeader = require('../components/pageHeader/pageHeader.js');
-// var pug = require('pug');
+    // pug = require('../node_modules/pug');
+var gallery = require('../components/gallery/gallery.js')
 
 var app = {};
 app.init = function () {
-    pageHeader.init();
+    gallery.init();
 }
 
-app.init();
+$(document).ready(function(){
+    app.init();
+});
